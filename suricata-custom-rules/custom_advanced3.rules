@@ -1,0 +1,59 @@
+# Detect FTP login attempt
+alert tcp any any -> any 21 (msg:"FTP Login Attempt Detected"; flow:to_server,established; sid:2000041; rev:1;)
+
+# Detect Telnet connection
+alert tcp any any -> any 23 (msg:"Telnet Connection Detected"; flow:to_server,established; sid:2000042; rev:1;)
+
+# Detect Nmap scan (NULL scan)
+alert tcp any any -> any any (msg:"Nmap NULL Scan Detected"; flags:0; sid:2000043; rev:1;)
+
+# Detect XSS attempt via URI
+alert http any any -> any any (msg:"XSS Attempt Detected in URI"; uricontent:"<script>"; nocase; sid:2000044; rev:1;)
+
+# Detect credit card numbers in HTTP
+alert http any any -> any any (msg:"Possible Credit Card Leakage"; pcre:"/4[0-9]{12}(?:[0-9]{3})?/"; sid:2000045; rev:1;)
+
+# Detect use of netcat
+alert tcp any any -> any any (msg:"Netcat Activity Detected"; content:"nc -e"; nocase; sid:2000046; rev:1;)
+
+# Detect suspicious Powershell command
+alert http any any -> any any (msg:"Suspicious Powershell Command Detected"; flow:to_server,established; content:"powershell.exe"; http_client_body; nocase; sid:2000047; rev:2;)
+
+# Detect download of executable files
+alert http any any -> any any (msg:"Download of EXE File Detected"; flow:from_server,established; content:"application/x-msdownload"; http_header; sid:2000048; rev:1;)
+
+# Detect ZIP file download
+alert http any any -> any any (msg:"Download of ZIP File Detected"; flow:from_server,established; content:"application/zip"; http_header; sid:2000049; rev:1;)
+
+# Detect scanning for common admin panels
+alert http any any -> any any (msg:"Admin Panel Scanning Attempt"; uricontent:"/admin"; nocase; sid:2000050; rev:1;)
+
+# Detect shellshock attempt
+alert http any any -> any any (msg:"Shellshock Exploit Attempt"; content:"() {"; http_header; sid:2000051; rev:1;)
+
+# Detect malicious iframe injection
+alert http any any -> any any (msg:"Malicious iframe Detected"; content:"<iframe src="; nocase; http_client_body; sid:2000052; rev:1;)
+
+# Detect LDAP traffic
+alert tcp any any -> any 389 (msg:"LDAP Traffic Detected"; flow:to_server,established; sid:2000053; rev:1;)
+
+# Detect brute-force login attempts via HTTP (multiple POSTs)
+alert http any any -> any any (msg:"HTTP Brute Force Attempt"; flow:to_server,established; http.method; content:"POST"; threshold:type threshold,track by_src,count 15,seconds 60; sid:2000054; rev:1;)
+
+# Detect TOR network access
+alert tcp any any -> any any (msg:"TOR Network Access Attempt"; content:".onion"; nocase; sid:2000055; rev:1;)
+
+# Detect external drive connection (for Windows systems)
+# alert usb any any -> any any (msg:"USB Storage Device Connected"; sid:2000056; rev:1;)
+
+# Detect email leaks (example.com in clear text)
+alert http any any -> any any (msg:"Potential Email Leak"; content:"@example.com"; nocase; sid:2000057; rev:1;)
+
+# Detect access to suspicious domains
+alert dns any any -> any any (msg:"Suspicious Domain Access Detected"; dns.query; content:"badsite.com"; nocase; sid:2000058; rev:1;)
+
+# Detect outgoing IRC traffic
+alert tcp any any -> any 6667 (msg:"IRC Communication Detected"; flow:to_server,established; sid:2000059; rev:1;)
+
+# Detect botnet C2 communication
+alert tcp any any -> any any (msg:"Possible Botnet C2 Communication"; content:"NICK "; depth:5; sid:2000060; rev:1;)

@@ -1,0 +1,59 @@
+# Detect directory traversal attempt
+alert http any any -> any any (msg:"Directory Traversal Attempt Detected"; uricontent:"../"; nocase; sid:2000061; rev:1;)
+
+# Detect access to backup files (.bak)
+alert http any any -> any any (msg:"Access to Backup Files Detected"; uricontent:".bak"; nocase; sid:2000062; rev:1;)
+
+# Detect attempt to upload webshell
+alert http any any -> any any (msg:"Webshell Upload Attempt"; content:"<?php"; http_client_body; nocase; sid:2000063; rev:1;)
+
+# Detect SMB null session
+alert tcp any any -> any 445 (msg:"SMB Null Session Attempt"; flow:to_server,established; content:"\\x00"; sid:2000064; rev:1;)
+
+# Detect SQL Injection UNION SELECT
+alert http any any -> any any (msg:"SQL Injection Union Select Detected"; uricontent:"union select"; nocase; sid:2000065; rev:1;)
+
+# Detect RDP connection attempt
+alert tcp any any -> any 3389 (msg:"RDP Connection Attempt Detected"; flow:to_server,established; sid:2000066; rev:1;)
+
+# Detect WordPress XMLRPC attack
+alert http any any -> any any (msg:"WordPress XMLRPC Attack Detected"; uricontent:"/xmlrpc.php"; nocase; sid:2000067; rev:1;)
+
+# Detect BitTorrent traffic
+alert tcp any any -> any any (msg:"BitTorrent Traffic Detected"; content:"BitTorrent protocol"; sid:2000068; rev:1;)
+
+# Detect unauthorized database access
+alert tcp any any -> any 3306 (msg:"MySQL Unauthorized Access Attempt"; flow:to_server,established; sid:2000069; rev:1;)
+
+# Detect connection to C2 server
+alert dns any any -> any any (msg:"C2 Server Communication Detected"; dns.query; content:"commandserver.com"; nocase; sid:2000070; rev:1;)
+
+# Detect payloads with Powershell encoded commands
+alert http any any -> any any (msg:"Encoded Powershell Payload Detected"; content:"JAB"; http_client_body; sid:2000071; rev:1;)
+
+# Detect access to environment variables
+alert http any any -> any any (msg:"Environment Variable Access Detected"; content:"ENV"; nocase; http_client_body; sid:2000072; rev:1;)
+
+# Detect possible file upload attacks
+alert http any any -> any any (msg:"Suspicious File Upload Attempt"; content:"Content-Disposition: form-data\;"; nocase; http_client_body; sid:2000073; rev:1;)
+
+# Detect VPN protocols (OpenVPN)
+alert udp any any -> any 1194 (msg:"OpenVPN Traffic Detected"; sid:2000074; rev:1;)
+
+# Detect HTTP requests to login pages
+alert http any any -> any any (msg:"HTTP Login Page Access"; uricontent:"/login"; nocase; sid:2000075; rev:1;)
+
+# Detect suspicious DNS TXT records
+alert dns any any -> any any (msg:"Suspicious DNS TXT Record Detected"; dns.query; content:"v=spf1"; nocase; sid:2000076; rev:1;)
+
+# Detect SMTP HELO flood
+alert tcp any any -> any 25 (msg:"SMTP HELO Flood Detected"; flow:to_server,established; content:"HELO"; threshold:type threshold,track by_src,count 20,seconds 60; sid:2000077; rev:1;)
+
+# Detect HTTP PUT method
+alert http any any -> any any (msg:"HTTP PUT Method Used"; http.method; content:"PUT"; sid:2000078; rev:1;)
+
+# Detect exploitation attempt of old Joomla versions
+alert http any any -> any any (msg:"Joomla Exploitation Attempt"; uricontent:"/joomla"; nocase; sid:2000079; rev:1;)
+
+# Detect HTTP requests with long URIs (possible buffer overflow)
+alert http any any -> any any (msg:"Suspicious Long URI Detected"; urilen:>512; sid:2000080; rev:1;)

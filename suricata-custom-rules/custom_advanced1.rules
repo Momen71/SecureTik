@@ -1,0 +1,59 @@
+# Detect FTP login attempt
+alert tcp any any -> any 21 (msg:"FTP Login Attempt Detected"; flow:to_server,established; content:"USER "; nocase; sid:2000001; rev:1;)
+
+# Detect Telnet connection
+alert tcp any any -> any 23 (msg:"Telnet Connection Attempt Detected"; flow:to_server,established; sid:2000002; rev:1;)
+
+# Detect Nmap scanning (SYN Scan)
+alert tcp any any -> any any (msg:"Possible Nmap SYN Scan"; flags:S; threshold:type threshold,track by_src,count 20,seconds 10; sid:2000003; rev:1;)
+
+# Detect HTTP User-Agent with suspicious value
+alert http any any -> any any (msg:"Suspicious User-Agent Detected"; content:"Nikto"; http_header; nocase; sid:2000004; rev:1;)
+
+# Detect access to /admin page
+alert http any any -> any any (msg:"Access to /admin Page"; uricontent:"/admin"; nocase; sid:2000005; rev:1;)
+
+# Detect possible SQL Injection attempt
+alert http any any -> any any (msg:"Possible SQL Injection"; flow:to_server,established; content:"' OR '1'='1"; nocase; http_client_body; sid:2000006; rev:1;)
+
+# Detect upload of executable via HTTP
+alert http any any -> any any (msg:"Upload of EXE File Detected"; content:"Content-Type: application/octet-stream"; http_header; nocase; sid:2000007; rev:1;)
+
+# Detect suspicious DNS Query
+alert dns any any -> any any (msg:"Suspicious DNS Query for hacktool.net"; dns.query; content:"hacktool.net"; nocase; sid:2000008; rev:1;)
+
+# Detect outbound IRC connection
+alert tcp any any -> any 6667 (msg:"IRC Outbound Connection Attempt"; flow:to_server,established; sid:2000009; rev:1;)
+
+# Detect HTTP basic authentication attempt
+alert http any any -> any any (msg:"HTTP Basic Auth Detected"; content:"Authorization: Basic"; http_header; sid:2000010; rev:1;)
+
+# Detect suspicious user-agent containing "sqlmap"
+alert http any any -> any any (msg:"SQLMap Tool User-Agent Detected"; content:"sqlmap"; http_header; nocase; sid:2000011; rev:1;)
+
+# Detect outbound SMTP connection (possible spam)
+alert tcp any any -> any 25 (msg:"Outbound SMTP Connection Detected"; flow:to_server,established; sid:2000012; rev:1;)
+
+# Detect TFTP connection attempt
+alert udp any any -> any 69 (msg:"TFTP Connection Attempt Detected"; sid:2000013; rev:1;)
+
+# Detect suspicious download of .exe file
+alert http any any -> any any (msg:"Suspicious .exe Download"; flow:to_server,established; uricontent:".exe"; nocase; sid:2000014; rev:1;)
+
+# Detect access to phpMyAdmin
+alert http any any -> any any (msg:"Access to phpMyAdmin Detected"; uricontent:"/phpmyadmin"; nocase; sid:2000115; rev:1;)
+
+# Detect remote desktop (RDP) connection
+alert tcp any any -> any 3389 (msg:"RDP Connection Attempt"; flow:to_server,established; sid:2000016; rev:1;)
+
+# Detect HTTP response with suspicious server header
+alert http any any -> any any (msg:"Suspicious Server Header"; content:"Server: Microsoft-IIS/6.0"; http_header; nocase; sid:2000017; rev:1;)
+
+# Detect SSH version scan
+alert tcp any any -> any 22 (msg:"SSH Version Probe Detected"; flow:to_server,established; content:"SSH-"; sid:2000018; rev:1;)
+
+# Detect HTTP POST with large body (possible exfiltration)
+alert http any any -> any any (msg:"Suspicious POST body pattern"; flow:to_server,established; content:"some-body-pattern"; http_client_body; sid:2000019; rev:2;)
+
+# Detect HTTP GET request with suspicious command
+alert http any any -> any any (msg:"HTTP GET with suspicious ?cmd="; flow:to_server,established; uricontent:"?cmd="; nocase; sid:2000020; rev:1;)
