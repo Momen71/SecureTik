@@ -7,6 +7,10 @@ if [ "$EUID" -ne 0 ]; then
   echo "[-] يجب تشغيل السكربت بصلاحيات root"
   exit 1
 fi
+# Ask the user to enter SSH port, default to 2410 if empty
+read -p "Enter new SSH port (leave empty for default 2410): " SSH_PORT
+SSH_PORT=${SSH_PORT:-2410}
+echo "[+] Selected SSH port: $SSH_PORT"
 
 echo "[+] جاري تطبيق قواعد الجدار الناري..."
 
@@ -29,8 +33,11 @@ iptables -A INPUT -i lo -j ACCEPT
 # السماح بالجلسات المفتوحة
 iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
-# السماح بـ SSH (يفضل تغيير البورت)
-iptables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -j ACCEPT
+# Allow SSH on the selected port with rate limiting (3 new connections per minute)
+iptables -A INPUT -p tcp --dport $SSH_PORT -m state --state NEW -m recent --set
+iptables -A INPUT -p tcp --dport $SSH_PORT -m state --state NEW -m recent --update --seconds 60 --hitcount 4 -j DROP
+iptables -A INPUT -p tcp --dport $SSH_PORT -m conntrack --ctstate NEW -j ACCEPT
+
 
 # السماح بـ HTTP/HTTPS
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT
