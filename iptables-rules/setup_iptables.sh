@@ -11,6 +11,17 @@ fi
 read -p "Enter new SSH port (leave empty for default 2410): " SSH_PORT
 SSH_PORT=${SSH_PORT:-2410}
 echo "[+] Selected SSH port: $SSH_PORT"
+# Automatically detect the network interface with an IP in the 192.168.1.x subnet
+INTERFACE=$(ip -o -4 addr show | grep "192.168.1." | awk '{print $2}' | head -n1)
+
+# If no interface found, exit with error
+if [ -z "$INTERFACE" ]; then
+  echo "[-] No network interface found with IP in 192.168.1.x subnet."
+  exit 1
+fi
+
+echo "[+] Using network interface: $INTERFACE"
+
 
 echo "[+] جاري تطبيق قواعد الجدار الناري..."
 
@@ -60,7 +71,7 @@ iptables -A INPUT -p tcp --tcp-flags ALL ALL -j DROP                            
 iptables -A INPUT -p tcp --tcp-flags ALL NONE -j DROP                             # NULL Scan
 
 # السماح للشبكة الداخلية
-iptables -A INPUT -i eth0 -s 192.168.1.0/24 -j ACCEPT
+iptables -A INPUT -i $INTERFACE -s 192.168.1.0/24 -j ACCEPT
 
 # تسجيل المحاولات المرفوضة (اختياري)
 iptables -A INPUT -j LOG --log-prefix "IPTables-Dropped: " --log-level 4
