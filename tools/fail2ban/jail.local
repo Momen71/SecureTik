@@ -29,7 +29,7 @@ logpath = /var/log/auth.log
 maxretry = 3       # Number of attempts before banning
 bantime = 600      # Ban duration in seconds (here: 10 minutes)
 findtime = 600     # Time window to count retries in seconds (here: 10 minutes)
-action = %(action_mwl)s
+action =  mail-whois[name=SSH, destemail=testuser@localhost, sender=fail2ban@localhost]
 destemail = testuser@localhost
 sender = fail2ban@localhost
 mta = sendmail

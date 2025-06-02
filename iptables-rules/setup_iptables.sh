@@ -4,13 +4,14 @@
 # created by SecureTik Team - 
 
 if [ "$EUID" -ne 0 ]; then
-  echo "[-] يجب تشغيل السكربت بصلاحيات root"
+  echo "[-] You must run this script as root"
   exit 1
 fi
 # Ask the user to enter SSH port, default to 2410 if empty
 read -p "Enter new SSH port (leave empty for default 2410): " SSH_PORT
 SSH_PORT=${SSH_PORT:-2410}
 echo "[+] Selected SSH port: $SSH_PORT"
+<<<<<<< HEAD
 # Automatically detect the network interface with an IP in the 192.168.1.x subnet
 INTERFACE=$(ip -o -4 addr show | grep "192.168.1." | awk '{print $2}' | head -n1)
 
@@ -22,10 +23,14 @@ fi
 
 echo "[+] Using network interface: $INTERFACE"
 
+=======
+echo "[+] Applying firewall rules..."
+# Get the network interface name dynamically (excluding loopback)
+NIC=$(ip -o link show | awk -F': ' '{print $2}' | grep -v lo | head -n1)
+echo "[+] Using network interface: $NIC"
+>>>>>>> firewall-taga
 
-echo "[+] جاري تطبيق قواعد الجدار الناري..."
-
-# إعادة تعيين القواعد
+# Reset all rules
 iptables -F
 iptables -X
 iptables -t nat -F
@@ -33,15 +38,15 @@ iptables -t nat -X
 iptables -t mangle -F
 iptables -t mangle -X
 
-# السياسات الافتراضية
+# Default policies
 iptables -P INPUT DROP
 iptables -P FORWARD DROP
 iptables -P OUTPUT ACCEPT
 
-# السماح بالـ loopback
+# Allow loopback interface
 iptables -A INPUT -i lo -j ACCEPT
 
-# السماح بالجلسات المفتوحة
+# Allow established sessions
 iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
 # Allow SSH on the selected port with rate limiting (3 new connections per minute)
@@ -50,14 +55,14 @@ iptables -A INPUT -p tcp --dport $SSH_PORT -m state --state NEW -m recent --upda
 iptables -A INPUT -p tcp --dport $SSH_PORT -m conntrack --ctstate NEW -j ACCEPT
 
 
-# السماح بـ HTTP/HTTPS
+# Allow HTTP/HTTPS
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 
-# السماح بـ ICMP (ping)
+# Allow ICMP (ping)
 iptables -A INPUT -p icmp --icmp-type 8 -m limit --limit 1/s -j ACCEPT
 
-# منع IP spoofing
+# Prevent IP spoofing
 iptables -A INPUT -s 127.0.0.0/8 ! -i lo -j DROP
 iptables -A INPUT -s 169.254.0.0/16 -j DROP
 iptables -A INPUT -s 224.0.0.0/4 -j DROP
@@ -65,19 +70,26 @@ iptables -A INPUT -s 240.0.0.0/5 -j DROP
 iptables -A INPUT -s 0.0.0.0/8 -j DROP
 iptables -A INPUT -d 255.255.255.255 -j DROP
 
-# منع هجمات معروفة
+# Prevent known attacks
 iptables -A INPUT -p tcp --syn -m limit --limit 1/s --limit-burst 3 -j ACCEPT     # SYN Flood
 iptables -A INPUT -p tcp --tcp-flags ALL ALL -j DROP                              # XMAS Scan
 iptables -A INPUT -p tcp --tcp-flags ALL NONE -j DROP                             # NULL Scan
 
+ HEAD
 # السماح للشبكة الداخلية
 iptables -A INPUT -i $INTERFACE -s 192.168.1.0/24 -j ACCEPT
 
-# تسجيل المحاولات المرفوضة (اختياري)
+# Allow internal network
+iptables -A INPUT -i $NIC -s 192.168.1.0/24  -j ACCEPT
+
+firewall-taga
+
+# Log rejected attempts (optional)
 iptables -A INPUT -j LOG --log-prefix "IPTables-Dropped: " --log-level 4
 
-echo "[+] تم تطبيق جميع القواعد"
+echo "[+] All rules applied"
 
-# حفظ القواعد
+# Save rules
 iptables-save > /etc/iptables/rules.v4
-echo "[+] تم حفظ القواعد في /etc/iptables/rules.v4"
+echo "[+] Rules saved to /etc/iptables/rules.v4"
+
