@@ -16,23 +16,30 @@
 # For example to change the default bantime for all jails and to enable the
 # ssh-iptables jail the following (uncommented) would appear in the .local file.
 # See man 5 jail.conf for details.
-#
-# [DEFAULT]
-# bantime = 1h
-#
+[DEFAULT]
+ignoreip = 
+bantime = 600
+findtime = 300
+maxretry = 3
 
+# bantime = 1h
+#backend = systemd
+#
 [sshd]
 enabled = true
-port = 2410        # If you changed the SSH port, put the new port here
+port = 2410
 filter = sshd
 logpath = /var/log/auth.log
-maxretry = 3       # Number of attempts before banning
-bantime = 600      # Ban duration in seconds (here: 10 minutes)
-findtime = 600     # Time window to count retries in seconds (here: 10 minutes)
-action =  mail-whois[name=SSH, destemail=testuser@localhost, sender=fail2ban@localhost]
+maxretry = 4
+bantime = 600
+findtime = 600
 destemail = testuser@localhost
 sender = fail2ban@localhost
 mta = sendmail
+action = %(action_mwl)s
+ telegram
+
+
 # See jail.conf(5) man page for more information
 
 
