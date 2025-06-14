@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 # iptables script to secure Linux server
@@ -44,9 +45,15 @@ iptables -A INPUT -p tcp --dport $SSH_PORT -m conntrack --ctstate NEW -j ACCEPT
 # Allow HTTP/HTTPS
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 iptables -A INPUT -p tcp --dport 443 -j ACCEPT
-
+sudo iptables -I INPUT -p tcp --dport 2410 -m conntrack --ctstate NEW -j LOG --log-prefix "SECURETIK-SSH-ACCESS: " --log-level 7
+iptables -A INPUT -p tcp --dport 2410 -j LOG --log-prefix "SECURETIK-SSH-DROP: " --log-level 7
+iptables -A INPUT -p tcp --dport 2410 -j DROP
+sudo iptables -R INPUT 20 -j LOG --log-prefix "IPTables-Dropped: " --log-level 7
+# Log and allow ping from 8.8.8.8
+sudo iptables -I INPUT 1 -p icmp -s 8.8.8.8 --icmp-type 8 -j LOG --log-prefix "SECURETIK-TEST: " --log-level 7
+sudo iptables -I INPUT 2 -p icmp -s 8.8.8.8 --icmp-type 8 -j ACCEPT
 # Allow ICMP (ping)
-iptables -A INPUT -p icmp --icmp-type 8 -m limit --limit 1/s -j ACCEPT
+iptables -A INPUT -p icmp --icmp-type 8 -m limit --limit 5/s -j ACCEPT
 
 # Prevent IP spoofing
 iptables -A INPUT -s 127.0.0.0/8 ! -i lo -j DROP
@@ -64,12 +71,14 @@ iptables -A INPUT -p tcp --tcp-flags ALL NONE -j DROP                           
 # Allow internal network
 iptables -A INPUT -i $NIC -s 10.0.0.0/8 -j ACCEPT
 
+
 # Log rejected attempts (optional)
-iptables -A INPUT -j LOG --log-prefix "IPTables-Dropped: " --log-level 4
+iptables -A INPUT -j LOG --log-prefix "IPTables-Dropped: " --log-level 7
 
 echo "[+] All rules applied"
 
 # Save rules
 iptables-save > /etc/iptables/rules.v4
 echo "[+] Rules saved to /etc/iptables/rules.v4"
+
 
