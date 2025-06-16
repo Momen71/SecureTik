@@ -8,11 +8,8 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 
-# Ask the user to enter SSH port, default to 2410 if empty
-read -p "Enter new SSH port (leave empty for default 2410): " SSH_PORT
-SSH_PORT=${SSH_PORT:-2410}
-
-echo "[+] Selected SSH port: $SSH_PORT"
+SSH_PORT=2410
+echo "[+] Using fixed SSH port: $SSH_PORT"
 
 
 # Get the network interface name dynamically (excluding loopback)
