@@ -3,22 +3,22 @@
 # iptables script to secure Linux server
 # created by SecureTik Team
 
+# Check for root privileges
 if [ "$EUID" -ne 0 ]; then
   echo "[-] You must run this script as root"
   exit 1
 fi
 
+# Fixed SSH port
 SSH_PORT=2410
 echo "[+] Using fixed SSH port: $SSH_PORT"
 
-
-# Get the network interface name dynamically (excluding loopback)
+# Get active network interface (excluding loopback)
 NIC=$(ip -o link show | awk -F': ' '{print $2}' | grep -v lo | head -n1)
 echo "[+] Using network interface: $NIC"
 
-
 echo "[+] Resetting existing rules..."
-# Reset all rules
+# Flush existing rules
 iptables -F
 iptables -X
 iptables -t nat -F
@@ -26,7 +26,7 @@ iptables -t nat -X
 iptables -t mangle -F
 iptables -t mangle -X
 
-# Default policies
+# Set default policies
 iptables -P INPUT DROP
 iptables -P FORWARD DROP
 iptables -P OUTPUT ACCEPT
@@ -34,55 +34,46 @@ iptables -P OUTPUT ACCEPT
 # Allow loopback interface
 iptables -A INPUT -i lo -j ACCEPT
 
-# Allow established/related connections
+# Allow established and related connections
 iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-# Log ICMP (ping) requests
+
+# ICMP (Ping) with rate limit
+iptables -A INPUT -p icmp --icmp-type 8 -m limit --limit 5/s --limit-burst 5 -j ACCEPT
 iptables -A INPUT -p icmp --icmp-type 8 -j LOG --log-prefix "SECURETIK-ICMP: " --log-level 7
 
-# Allow ICMP (ping) with rate limit
-iptables -A INPUT -p icmp --icmp-type 8 -m limit --limit 5/s --limit-burst 5 -j ACCEPT
-# SSH: Log and rate-limit
-# 1. Add IP to the recent list
-iptables -A INPUT -p tcp --dport $SSH_PORT -m state --state NEW -m recent --set
-
-# 2. If limit exceeded, log and drop
-iptables -A INPUT -p tcp --dport $SSH_PORT -m state --state NEW -m recent --update --seconds 60 --hitcount 4 -j LOG --log-prefix "SECURETIK-SSH-DROP: " --log-level 7
-iptables -A INPUT -p tcp --dport $SSH_PORT -m state --state NEW -m recent --update --seconds 60 --hitcount 4 -j DROP
-
-
-# 3. If limit not exceeded, log and accept
+# SSH: Allow and log new connections (Suricata will handle brute-force detection)
 iptables -A INPUT -p tcp --dport $SSH_PORT -m conntrack --ctstate NEW -j LOG --log-prefix "SECURETIK-SSH-ACCESS: " --log-level 7
 iptables -A INPUT -p tcp --dport $SSH_PORT -m conntrack --ctstate NEW -j ACCEPT
 
-# HTTP/HTTPS
+# Allow HTTP/HTTPS
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 
-# ICMP (Ping): Log and limit
-#iptables -A INPUT -p icmp --icmp-type 8 -j LOG --log-prefix "SECURETIK-ICMP: " --log-level 7
-#iptables -A INPUT -p icmp --icmp-type 8 -m limit --limit 5/s --limit-burst 5 -j ACCEPT
-
-# Prevent IP Spoofing
-
+# Anti-spoofing rules
 iptables -A INPUT -s 127.0.0.0/8 ! -i lo -j DROP
 iptables -A INPUT -s 169.254.0.0/16 -j DROP
-iptables -A INPUT -s 224.0.0.0/4 -j DROP
-iptables -A INPUT -s 240.0.0.0/5 -j DROP
 iptables -A INPUT -s 0.0.0.0/8 -j DROP
 iptables -A INPUT -d 255.255.255.255 -j DROP
 
-# Prevent common attacks
-iptables -A INPUT -p tcp --syn -m limit --limit 1/s --limit-burst 3 -j ACCEPT     # SYN flood
-iptables -A INPUT -p tcp --tcp-flags ALL ALL -j DROP                              # XMAS scan
-iptables -A INPUT -p tcp --tcp-flags ALL NONE -j DROP                             # NULL scan
+# SYN flood protection
+iptables -A INPUT -p tcp --syn -m limit --limit 1/s --limit-burst 3 -j ACCEPT
 
+# Drop suspicious traffic directly (even if Suricata is active)
+iptables -A INPUT -p tcp --tcp-flags ALL ALL -j DROP      # XMAS scan
+iptables -A INPUT -p tcp --tcp-flags ALL NONE -j DROP     # NULL scan
+iptables -A INPUT -s 224.0.0.0/4 -j DROP                  # Multicast
+iptables -A INPUT -s 240.0.0.0/5 -j DROP                  # Reserved
 
-# Allow internal traffic from private network
+# Allow internal private network traffic (adjust if needed)
 iptables -A INPUT -i $NIC -s 10.0.0.0/8 -j ACCEPT
 
-# Final catch-all log rule
+# === Suricata IPS Integration ===
+# Send traffic to NFQUEUE for Suricata to inspect
+iptables -I INPUT -j NFQUEUE --queue-num 0
+iptables -I FORWARD -j NFQUEUE --queue-num 0
 
-iptables -A INPUT -j LOG --log-prefix "IPTables-Dropped: " --log-level 7
+# Logging of dropped packets by iptables (optional if Suricata handles it)
+# iptables -A INPUT -j LOG --log-prefix "IPTables-Dropped: " --log-level 7
 
 echo "[+] All rules applied successfully."
 
