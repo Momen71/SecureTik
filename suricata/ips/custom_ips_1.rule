@@ -1,0 +1,180 @@
+# 1. Block FTP login attempts (USER command)
+drop tcp any any -> any 21 (
+    msg:"[SecureTik-IPS] FTP Login Attempt Blocked";
+    flow:to_server,established;
+    content:"USER ";
+    nocase;
+    sid:3000001;
+    rev:1;
+)
+
+# 2. Block Telnet connection attempts
+drop tcp any any -> any 23 (
+    msg:"[SecureTik-IPS] Telnet Connection Blocked";
+    flow:to_server,established;
+    sid:3000002;
+    rev:1;
+)
+
+# 3. Block HTTP access to /admin path
+drop tcp any any -> any 80 (
+    msg:"[SecureTik-IPS] Blocked HTTP access to /admin";
+    flow:to_server,established;
+    content:"GET /admin";
+    http_method;
+    http_uri;
+    sid:3000003;
+    rev:1;
+)
+
+# 4. Block download of .exe files over HTTP
+drop tcp any any -> any 80 (
+    msg:"[SecureTik-IPS] Blocked .exe file download";
+    flow:to_client,established;
+    content:".exe";
+    http_uri;
+    sid:3000004;
+    rev:1;
+)
+
+# 5. Block SQL injection using 'UNION SELECT'
+drop tcp any any -> any 80 (
+    msg:"[SecureTik-IPS] SQL Injection - UNION SELECT";
+    flow:to_server,established;
+    content:"UNION SELECT";
+    nocase;
+    sid:3000005;
+    rev:1;
+)
+
+# 6. Block XSS attempt with <script> tag
+drop tcp any any -> any 80 (
+    msg:"[SecureTik-IPS] XSS Attempt - <script> tag";
+    flow:to_server,established;
+    content:"<script>";
+    nocase;
+    sid:3000006;
+    rev:1;
+)
+
+# 7. Block access to phpMyAdmin
+drop tcp any any -> any 80 (
+    msg:"[SecureTik-IPS] Blocked access to phpMyAdmin";
+    flow:to_server,established;
+    content:"GET /phpmyadmin";
+    http_method;
+    http_uri;
+    sid:3000007;
+    rev:1;
+)
+
+# 8. Block SMB port (Windows file sharing)
+drop tcp any any -> any 445 (
+    msg:"[SecureTik-IPS] SMB Traffic Blocked";
+    sid:3000008;
+    rev:1;
+)
+
+# 9. Block RDP port (Remote Desktop)
+drop tcp any any -> any 3389 (
+    msg:"[SecureTik-IPS] RDP Access Blocked";
+    sid:3000009;
+    rev:1;
+)
+
+# 10. Block Nmap aggressive scan signature
+drop tcp any any -> any 80 (
+    msg:"[SecureTik-IPS] Nmap Aggressive Scan Detected";
+    content:"Nmap";
+    nocase;
+    sid:3000010;
+    rev:1;
+)
+
+# 11. Block IRC traffic (commonly abused by bots)
+drop tcp any any -> any 6667 (
+    msg:"[SecureTik-IPS] IRC Communication Blocked";
+    sid:3000011;
+    rev:1;
+)
+
+# 12. Block HTTP basic auth credentials leakage
+drop tcp any any -> any 80 (
+    msg:"[SecureTik-IPS] HTTP Basic Auth Credentials Detected";
+    content:"Authorization: Basic ";
+    nocase;
+    sid:3000012;
+    rev:1;
+)
+
+# 13. Block Metasploit reverse shell over HTTP
+drop tcp any any -> any 80 (
+    msg:"[SecureTik-IPS] Metasploit Reverse Shell Detected";
+    content:"Meterpreter";
+    nocase;
+    sid:3000013;
+    rev:1;
+)
+
+# 14. Block traffic with suspicious User-Agent string (curl)
+drop tcp any any -> any 80 (
+    msg:"[SecureTik-IPS] Suspicious User-Agent: curl";
+    content:"User-Agent: curl";
+    nocase;
+    sid:3000014;
+    rev:1;
+)
+
+# 15. Block upload of web shells
+drop tcp any any -> any 80 (
+    msg:"[SecureTik-IPS] Web Shell Upload Attempt";
+    content:"cmd=";
+    http_client_body;
+    sid:3000015;
+    rev:1;
+)
+
+# 16. Block .bat file downloads
+drop tcp any any -> any 80 (
+    msg:"[SecureTik-IPS] Blocked .bat file download";
+    content:".bat";
+    http_uri;
+    sid:3000016;
+    rev:1;
+)
+
+# 17. Block remote code execution keyword "system("
+drop tcp any any -> any 80 (
+    msg:"[SecureTik-IPS] RCE Attempt - system() function";
+    content:"system(";
+    nocase;
+    sid:3000017;
+    rev:1;
+)
+
+# 18. Block usage of Powershell command in HTTP request
+drop tcp any any -> any 80 (
+    msg:"[SecureTik-IPS] Powershell Command Detected";
+    content:"powershell";
+    nocase;
+    sid:3000018;
+    rev:1;
+)
+
+# 19. Block upload of .php file
+drop tcp any any -> any 80 (
+    msg:"[SecureTik-IPS] PHP File Upload Attempt";
+    content:".php";
+    http_client_body;
+    sid:3000019;
+    rev:1;
+)
+
+# 20. Block known malicious user agent (sqlmap)
+drop tcp any any -> any 80 (
+    msg:"[SecureTik-IPS] SQLMap Scan Detected";
+    content:"User-Agent: sqlmap";
+    nocase;
+    sid:3000020;
+    rev:1;
+)
