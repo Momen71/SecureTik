@@ -13,7 +13,8 @@ sudo apt install -y software-properties-common python3-pip jq ethtool curl net-t
 echo "[*] Adding Suricata stable PPA..."
 sudo add-apt-repository -y ppa:oisf/suricata-stable
 sudo apt update
-sudo apt install -y suricata suricata-update
+sudo apt install -y suricata 
+suricata-update
 
 # Step 3: Ask for interface
 echo ""
