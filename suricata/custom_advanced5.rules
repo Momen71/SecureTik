@@ -1,0 +1,59 @@
+# Detect SQL injection -- basic OR 1=1 pattern
+alert http any any -> any any (msg:"SQL Injection Attempt (OR 1=1)"; uricontent:"or 1=1"; nocase; sid:2000081; rev:1;)
+
+# Detect Wordpress login brute force
+alert http any any -> any any (msg:"WordPress Login Brute Force"; uricontent:"/wp-login.php"; nocase; http.method; content:"POST"; sid:2000082; rev:1;)
+
+# Detect Drupal exploit attempts
+alert http any any -> any any (msg:"Drupal Exploit Attempt Detected"; uricontent:"/user/register"; nocase; sid:2000083; rev:1;)
+
+# Detect Malicious User-Agent (sqlmap)
+alert http any any -> any any (msg:"Malicious User-Agent sqlmap Detected"; http.user_agent; content:"sqlmap"; nocase; sid:2000084; rev:1;)
+
+# Detect suspicious EXE file upload attempt
+alert http any any -> any any (msg:"Suspicious EXE File Upload"; flow:to_server,established; content:".exe"; http_client_body; nocase; sid:2000085; rev:2;)
+
+# Detect suspicious PDF file download
+alert http any any -> any any (msg:"PDF File Download Detected"; content:"application/pdf"; http_header; sid:2000086; rev:1;)
+
+# Detect attempt to access shadow file
+alert http any any -> any any (msg:"Attempt to Access /etc/shadow"; uricontent:"/etc/shadow"; nocase; sid:2000087; rev:1;)
+
+# Detect outbound RDP traffic
+alert tcp any any -> any 3389 (msg:"Outbound RDP Traffic Detected"; flow:from_client,established; sid:2000088; rev:1;)
+
+# Detect TLS Heartbeat exploit attempts (Heartbleed CVE-2014-0160)
+alert tcp any any -> any 443 (msg:"TLS Heartbeat Exploit Attempt"; flow:to_server,established; content:"|18 03 02|"; depth:3; sid:2000089; rev:5;)
+
+# Detect suspicious User-Agent string
+alert http any any -> any any (msg:"Suspicious User-Agent Found"; content:"Mozilla/4.0 (compatible\; MSIE 6.0\; Windows NT 5.1)"; http_header; nocase; sid:2000090; rev:2;)
+
+# Detect excessive DNS queries
+alert udp any any -> any 53 (msg:"DNS Query Flood Detected"; threshold:type threshold, track by_src, count 50, seconds 10; sid:2000091; rev:1;)
+
+# Detect NTLM authentication attempts
+alert tcp any any -> any 445 (msg:"NTLM Authentication Attempt Detected"; content:"NTLMSSP"; sid:2000092; rev:1;)
+
+# Detect Wordpress Timthumb exploit attempts
+alert http any any -> any any (msg:"WordPress Timthumb Exploit Attempt"; uricontent:"timthumb.php"; nocase; sid:2000093; rev:1;)
+
+# Detect PHP code injection attempt
+alert http any any -> any any (msg:"PHP Code Injection Detected"; flow:to_server,established; content:"<?php"; http_client_body; nocase; sid:2000094; rev:2;)
+
+# Detect DNS tunneling attempt
+alert udp any any -> any 53 (msg:"DNS Tunneling Attempt Detected"; content:"="; threshold:type threshold, track by_src, count 30, seconds 60; sid:2000095; rev:1;)
+
+# Detect open proxy access
+alert tcp any any -> any 8080 (msg:"Open Proxy Access Detected"; flow:to_server,established; sid:2000096; rev:1;)
+
+# Detect PHPMyAdmin access attempt
+alert http any any -> any any (msg:"phpMyAdmin Access Attempt"; uricontent:"/phpmyadmin"; nocase; sid:2000097; rev:1;)
+
+# Detect malicious PDF exploit
+alert http any any -> any any (msg:"Malicious PDF Exploit Detected"; content:"/JS"; http_client_body; nocase; sid:2000098; rev:1;)
+
+# Detect web application scanning tools (wpscan)
+alert http any any -> any any (msg:"WPScan Detected"; http.user_agent; content:"WPScan"; nocase; sid:2000099; rev:1;)
+
+# Detect suspicious long DNS query
+alert udp any any -> any 53 (msg:"Suspicious Long DNS Query"; dsize:>512; sid:2000100; rev:1;)

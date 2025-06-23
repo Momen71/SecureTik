@@ -1,0 +1,126 @@
+
+
+
+# 1. Block FTP login attempts (USER command)
+drop tcp any any -> any 21 (msg:"[SecureTik-IPS] FTP Login Attempt Blocked"; flow:to_server,established; content:"USER "; nocase; sid:3000001; rev:1;)
+
+# 2. Block Telnet connection attempts
+drop tcp any any -> any 23 (msg:"[SecureTik-IPS] Telnet Connection Blocked"; flow:to_server,established; sid:3000002; rev:1;)
+
+# 3. Block HTTP access to /admin path
+drop http any any -> any any (msg:"[SecureTik-IPS] Blocked HTTP access to /admin"; flow:to_server,established; content:"GET"; http_method; content:"/admin"; http_uri; sid:3000003; rev:1;)
+
+# 4. Block download of .exe files over HTTP
+#drop http any any -> any any (msg:"[SecureTik-IPS] Blocked .exe file download"; flow:to_client,established; content:".exe"; http_uri; sid:3000004; rev:1;)
+drop http any any -> any any (msg:"[SecureTik-IPS] Blocked .exe file download"; flow:to_client,established; file_data; content:".exe"; nocase; sid:3000004; rev:2;)
+
+# 5. Block SQL injection using 'UNION SELECT'
+drop http any any -> any any (msg:"[SecureTik-IPS] SQL Injection - UNION SELECT"; flow:to_server,established; content:"UNION SELECT"; nocase; sid:3000005; rev:1;)
+
+# 6. Block XSS attempt with <script> tag
+drop http any any -> any any (msg:"[SecureTik-IPS] XSS Attempt - <script> tag"; flow:to_server,established; content:"<script>"; nocase; sid:3000006; rev:1;)
+
+# 7. Block access to phpMyAdmin
+drop http any any -> any any (msg:"[SecureTik-IPS] Blocked access to phpMyAdmin"; flow:to_server,established; content:"GET"; http_method; content:"/phpmyadmin"; http_uri; sid:3000007; rev:1;)
+
+# 8. Block SMB port (Windows file sharing)
+drop tcp any any -> any 445 (msg:"[SecureTik-IPS] SMB Traffic Blocked"; sid:3000008; rev:1;)
+
+# 9. Block RDP port (Remote Desktop)
+drop tcp any any -> any 3389 (msg:"[SecureTik-IPS] RDP Access Blocked"; sid:3000009; rev:1;)
+
+# 10. Block Nmap aggressive scan signature
+drop http any any -> any any (msg:"[SecureTik-IPS] Nmap Aggressive Scan Detected"; content:"Nmap"; nocase; sid:3000010; rev:1;)
+
+# 11. Block IRC traffic (commonly abused by bots)
+drop tcp any any -> any 6667 (msg:"[SecureTik-IPS] IRC Communication Blocked"; sid:3000011; rev:1;)
+
+# 12. Block HTTP basic auth credentials leakage
+drop http any any -> any any (msg:"[SecureTik-IPS] HTTP Basic Auth Credentials Detected"; content:"Authorization: Basic "; nocase; sid:3000012; rev:1;)
+
+# 13. Block Metasploit reverse shell over HTTP
+drop http any any -> any any (msg:"[SecureTik-IPS] Metasploit Reverse Shell Detected"; content:"Meterpreter"; nocase; sid:3000013; rev:1;)
+
+# 14. Block traffic with suspicious User-Agent string (curl)
+drop http any any -> any any (msg:"[SecureTik-IPS] Suspicious User-Agent: curl"; content:"User-Agent: curl"; nocase; sid:3000014; rev:1;)
+
+# 15. Block upload of web shells
+drop http any any -> any any (msg:"[SecureTik-IPS] Web Shell Upload Attempt"; content:"cmd="; http_client_body; sid:3000015; rev:1;)
+
+# 16. Block .bat file downloads
+drop http any any -> any any (msg:"[SecureTik-IPS] Blocked .bat file download"; content:".bat"; http_uri; sid:3000016; rev:1;)
+
+# 17. Block remote code execution keyword "system("
+drop http any any -> any any (msg:"[SecureTik-IPS] RCE Attempt - system() function"; content:"system("; nocase; sid:3000017; rev:1;)
+
+# 18. Block usage of Powershell command in HTTP request
+drop http any any -> any any (msg:"[SecureTik-IPS] Powershell Command Detected"; content:"powershell"; nocase; sid:3000018; rev:1;)
+
+# 19. Block upload of .php file
+drop http any any -> any any (msg:"[SecureTik-IPS] PHP File Upload Attempt"; content:".php"; http_client_body; sid:3000019; rev:1;)
+
+# 20. Block known malicious user agent (sqlmap)
+drop http any any -> any any (msg:"[SecureTik-IPS] SQLMap Scan Detected"; content:"User-Agent: sqlmap"; nocase; sid:3000020; rev:1;)
+# 21. Block TFTP traffic (UDP port 69)
+drop udp any any -> any 69 (msg:"[SecureTik-IPS] TFTP Traffic Blocked"; sid:3000021; rev:1;)
+
+# 22. Block ICMP ping requests (echo request)
+drop icmp any any -> any any (msg:"[SecureTik-IPS] ICMP Echo Request Blocked"; itype:8; sid:3000022; rev:1;)
+
+# 23. Block IRC NICK change attempts (common in botnets)
+drop tcp any any -> any 6667 (msg:"[SecureTik-IPS] IRC NICK Command Blocked"; content:"NICK "; nocase; sid:3000023; rev:1;)
+
+# 24. Block access to wp-login.php (WordPress login brute force)
+drop http any any -> any any (msg:"[SecureTik-IPS] Blocked access to wp-login.php"; flow:to_server,established; content:"/wp-login.php"; http_uri; content:"GET"; http_method; sid:3000024; rev:2;)
+
+# 25. Block suspicious filename ".asp" upload
+drop http any any -> any any (msg:"[SecureTik-IPS] .asp File Upload Attempt"; content:".asp"; http_client_body; sid:3000025; rev:1;)
+
+# 26. Block long URI attempts (possible buffer overflow)
+drop http any any -> any any (msg:"[SecureTik-IPS] Suspiciously Long URI Detected"; urilen:>1024; sid:3000026; rev:1;)
+
+# 27. Block base64 encoded payload in URI
+drop http any any -> any any (msg:"[SecureTik-IPS] Base64 Payload in URI"; pcre:"/\/[A-Za-z0-9+\/=]{40,}/"; sid:3000027; rev:1;)
+
+# 28. Block unauthorized PUT request (file upload)
+drop http any any -> any any (msg:"[SecureTik-IPS] HTTP PUT Method Blocked"; flow:to_server,established; content:"PUT"; http_method; sid:3000028; rev:2;)
+
+# 29. Block outbound DNS requests to suspicious domain
+drop udp any any -> any 53 (msg:"[SecureTik-IPS] Suspicious DNS Query to .xyz domain"; content:".xyz"; nocase; sid:3000029; rev:1;)
+
+# 30. Block download of suspicious powershell scripts
+drop http any any -> any any (msg:"[SecureTik-IPS] Powershell Script Download Blocked"; content:".ps1"; http_uri; sid:3000030; rev:1;)
+
+# 31. Block access to sensitive backup files
+drop http any any -> any any (msg:"[SecureTik-IPS] Backup File Access Blocked"; content:".bak"; http_uri; sid:3000031; rev:1;)
+
+# 32. Block presence of "/etc/passwd" in HTTP payload
+drop http any any -> any any (msg:"[SecureTik-IPS] Linux passwd File Leakage Detected"; content:"/etc/passwd"; nocase; sid:3000032; rev:1;)
+
+# 33. Block ".env" file leakage (contains secrets)
+drop http any any -> any any (msg:"[SecureTik-IPS] .env File Leakage Detected"; content:".env"; http_uri; sid:3000033; rev:1;)
+
+# 34. Block access to shell history file
+drop http any any -> any any (msg:"[SecureTik-IPS] .bash_history Access Blocked"; content:".bash_history"; nocase; sid:3000034; rev:1;)
+
+# 35. Block outgoing SMTP traffic (port 25) to prevent spam
+drop tcp any any -> any 25 (msg:"[SecureTik-IPS] Outgoing SMTP Blocked"; sid:3000035; rev:1;)
+
+# 36. Block HTTP POST to /upload endpoint
+drop http any any -> any any (msg:"[SecureTik-IPS] Upload Attempt Detected"; flow:to_server,established; content:"POST"; http_method; content:"/upload"; http_uri; classtype:web-application-attack; sid:3000036; rev:2;)
+
+# 37. Block shellshock vulnerability exploit
+#drop http any any -> any any (msg:"[SecureTik-IPS] Shellshock Exploit Detected"; flow:to_server,established; content:"() { :; }"; nocase; sid:3000037; rev:2;)
+#drop http any any -> any any (msg:"[SecureTik-IPS] Shellshock Exploit Detected"; flow:to_server,established; content:"() {"; content:":;"; distance:0; nocase; sid:3000037; rev:3;)
+drop http any any -> any any (msg:"[SecureTik-IPS] Shellshock Exploit Detected"; flow:to_server,established; content:"() {"; content:"|3A 3B|"; distance:0; sid:3000037; rev:4;)
+
+# 38. Block HTTP requests using User-Agent: python-requests
+drop http any any -> any any (msg:"[SecureTik-IPS] Python Requests User-Agent Detected"; content:"User-Agent: python-requests"; nocase; sid:3000038; rev:1;)
+
+# 39. Block HTTP access to /.git directory
+drop http any any -> any any (msg:"[SecureTik-IPS] Git Directory Access Attempt"; flow:to_server,established; content:"/\\.git"; http_uri; sid:3000039; rev:2;)
+
+# 40. Block SSRF payloads with 169.254 (AWS metadata IP)
+drop http any any -> any any (msg:"[SecureTik-IPS] SSRF Attempt to AWS Metadata Service"; content:"169.254."; sid:3000040; rev:1;)
+
+
