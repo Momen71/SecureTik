@@ -1,0 +1,2622 @@
+[
+  {
+    "timestamp": "2025-06-21T06:39:07.529938+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T06:42:52.648870+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T06:42:52.848345+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "Suspicious SSH Client Detected",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T06:42:52.918751+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T06:42:55.710022+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 0.99,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T06:42:56.099821+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T06:43:16.339533+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T06:43:18.318704+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T06:43:19.368936+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T06:43:19.874872+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T06:43:20.848395+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T06:43:22.691080+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T06:43:23.382180+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T06:43:23.484952+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T06:43:23.489509+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 0.99,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T06:43:23.500457+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 0.99,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T06:43:23.503089+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 0.99,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T06:43:23.506754+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T06:45:24.722936+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T06:54:07.535789+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T07:09:07.535921+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T07:20:40.609473+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T07:22:19.324617+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T07:22:51.549648+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T07:24:44.517879+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T07:39:44.494849+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T07:54:44.468825+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T08:09:44.447287+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T08:24:44.420874+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T08:39:20.082697+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T08:54:20.054369+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T09:09:20.283752+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T09:24:20.490891+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T09:39:20.261433+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T11:36:02.856104+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T11:37:30.673092+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T11:52:30.717822+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T12:07:30.737909+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T12:22:30.769617+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T12:37:30.835977+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T12:52:30.773672+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T13:07:30.786384+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T13:22:30.810931+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T13:37:30.843693+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T13:52:30.714137+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T14:07:30.726742+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T14:22:30.733090+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T14:37:30.725927+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T14:52:30.735714+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T15:07:30.749474+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T15:22:30.751123+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T15:37:30.754624+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T15:52:30.798683+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T16:07:30.816006+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T16:22:30.819787+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T16:37:30.821236+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T16:52:30.825729+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T17:07:30.812481+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T17:22:30.818143+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T17:37:30.821411+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T17:52:30.825213+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T18:07:30.830048+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T18:22:30.838772+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T18:37:30.838856+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T18:52:30.843790+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T19:07:30.849116+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T19:07:42.549548+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T19:07:54.504134+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T19:08:41.038815+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T19:09:21.371225+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T19:09:53.668536+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T19:24:53.671854+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T19:39:53.675382+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T19:54:53.693297+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T20:09:53.692684+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T20:24:53.702634+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T20:39:53.710049+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T20:54:53.720671+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T21:09:53.741590+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T21:24:53.749794+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T21:39:53.740205+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T21:54:53.745322+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T22:09:53.737374+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T22:24:53.738802+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T22:39:53.737526+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T22:54:53.744163+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T23:09:53.785364+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T23:24:53.805497+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T23:39:53.784627+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-21T23:54:53.789656+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T00:09:53.778318+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T00:24:53.783363+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T00:39:53.786757+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T00:54:53.798580+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T01:09:53.804076+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T01:24:53.822669+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T01:39:53.849273+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T01:54:53.844828+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T02:09:53.844011+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T02:24:53.856857+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T02:39:53.865953+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T02:54:53.871885+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T03:09:53.877809+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T03:24:53.883603+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T03:39:53.898984+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T03:54:53.901652+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T04:09:53.906790+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T04:24:53.904255+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T04:39:53.906666+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T04:54:53.907414+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T05:09:53.918998+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T05:24:53.919358+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T05:39:53.861728+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T05:57:13.256450+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T06:12:14.290263+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T06:27:14.293428+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T07:27:27.086868+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T07:27:49.650755+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T07:42:49.899241+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T07:57:49.898563+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T08:12:49.883068+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T08:27:49.881624+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T08:42:49.848828+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T08:57:49.906195+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T09:12:49.914590+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T09:27:49.937628+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T09:42:49.964093+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T09:57:49.965663+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.407926+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.470278+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "Suspicious SSH Client Detected",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.479650+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.765553+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.765889+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.766664+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.778091+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "Suspicious SSH Client Detected",
+    "severity": 1,
+    "ai_confidence": 0.96,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.826363+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.863838+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.886245+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.893363+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.905996+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.912235+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.916435+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.924402+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.933401+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "Suspicious SSH Client Detected",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.934003+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.949468+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "Suspicious SSH Client Detected",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.949468+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.949523+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "Suspicious SSH Client Detected",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.955310+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.965561+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "Suspicious SSH Client Detected",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.967465+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.970135+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "Suspicious SSH Client Detected",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.972769+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.982896+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "Suspicious SSH Client Detected",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.982896+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.987358+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "Suspicious SSH Client Detected",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.988281+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.991019+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "Suspicious SSH Client Detected",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:55.991019+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:56.001239+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:56.001400+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "Suspicious SSH Client Detected",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:56.005262+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "Suspicious SSH Client Detected",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:56.005262+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:56.013606+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:56.022300+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:56.030632+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "Suspicious SSH Client Detected",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:56.038121+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:56.038376+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "Suspicious SSH Client Detected",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:56.038141+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "Suspicious SSH Client Detected",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:56.038962+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:56.055463+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:56.070128+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "Suspicious SSH Client Detected",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:56.085177+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:56.085459+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "Suspicious SSH Client Detected",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:57.644707+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:57.689571+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:58.905667+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:58.908847+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:58.912159+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:07:59.217530+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:08:00.896919+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 0.99,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:08:00.928091+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "SSH Brute Force Attempt",
+    "severity": 2,
+    "ai_confidence": 0.99,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:10:13.144279+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "[SecureTik-IPS] Upload Attempt Detected",
+    "severity": 1,
+    "ai_confidence": 0.95,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:12:49.985190+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:27:49.994575+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:42:50.016079+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T10:57:50.033035+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T11:30:55.143929+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T11:31:58.643007+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T11:37:56.360054+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T11:52:57.437075+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T14:20:10.033418+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T14:20:22.427776+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T14:29:49.143855+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T14:44:32.557074+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.133",
+    "proto": "TCP",
+    "signature": "HTTP PUT Method Detected - Potential File Upload",
+    "severity": 1,
+    "ai_confidence": 0.98,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T14:44:49.164555+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T14:59:49.175685+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T15:09:23.147324+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T15:24:23.145045+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T15:31:37.724036+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T15:31:47.761017+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T15:32:03.040969+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T15:34:32.599269+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T15:49:32.589471+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T16:04:32.589960+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T16:19:32.632738+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T16:34:32.654076+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T16:39:50.591512+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T16:54:50.603870+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T17:09:50.628297+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T17:24:50.581016+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T17:39:50.570160+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T17:54:50.569145+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T17:56:14.485130+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T17:56:28.649855+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T17:57:00.806450+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T17:57:11.068952+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T18:12:11.099804+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T18:27:11.101353+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T18:42:11.118452+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T18:57:11.128523+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T19:12:11.134177+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T19:27:11.140923+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T19:42:11.150271+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T19:57:11.174425+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T20:10:46.977897+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T20:11:51.515225+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T20:26:51.524084+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T20:41:51.532052+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T20:56:51.536231+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T21:11:51.536454+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T21:26:51.547865+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T21:41:51.552290+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T21:56:51.561753+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T22:11:51.572618+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-22T22:26:51.576406+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T03:36:05.697444+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T03:36:06.371174+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T03:51:06.391219+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T04:06:06.400520+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T04:21:06.409487+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T04:36:06.422947+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T04:51:06.423609+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T05:06:06.434586+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T05:21:06.444830+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T05:36:06.451727+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T06:19:59.958415+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T06:20:08.098553+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T06:21:00.056182+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T06:35:58.916756+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T06:40:30.473668+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T06:55:30.481471+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T07:10:30.492252+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T07:25:30.497372+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T07:40:30.497229+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T07:55:30.512173+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T08:10:30.522720+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T08:25:30.536897+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T08:40:30.542830+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T08:50:34.016198+0000",
+    "src_ip": "0.0.0.0",
+    "dest_ip": "255.255.255.255",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T09:05:34.027506+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  },
+  {
+    "timestamp": "2025-06-23T09:20:34.031307+0000",
+    "src_ip": "192.168.80.128",
+    "dest_ip": "192.168.80.254",
+    "proto": "UDP",
+    "signature": "ET INFO Possible Kali Linux hostname in DHCP Request Packet",
+    "severity": 1,
+    "ai_confidence": 1.0,
+    "prediction": 1
+  }
+]
