@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Traffic Control | MikroTik Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+	:root {
+            --primary: #2c3e50; /* الأزرق الغامق للعناوين الرئيسية */
+            --primary-light: #3498db; /* الأزرق الفاتح للنصوص */
+            --secondary: #2980b9;
+            --background: #f8f9fa;
+            --card: #ffffff;
+            --text: #34495e;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+        }
+        body {
+            font-size: 18px !important; /* تكبير عام لكل النصوص */
+        }
+
+        .header h2 {
+            font-size: 28px !important; /* تكبير عنوان الصفحة */
+            color: var(--secondary);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .stats-container {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            margin: 0 0 20px 0;
+            font-size: 22px !important; /* تكبير عناوين البطاقات */
+            color: var(--primary-light); /* أزرق فاتح */
+            font-weight: 600;
+        }
+
+        .stat-value {
+            font-size: 36px !important; /* تكبير الأرقام */
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .traffic-control-container {
+            padding: 30px;
+            background: var(--card);
+            border-radius: 15px;
+            margin-top: 25px;
+            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.1);
+        }
+
+        .control-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 20px !important;
+            color: var(--primary-light); /* أزرق فاتح للعناوين */
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            background: var(--card);
+            color: var(--text);
+            font-size: 18px !important;
+        }
+
+        .btn-action {
+            padding: 15px 25px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 18px !important;
+            transition: background 0.3s;
+        }
+
+        .btn-action:hover {
+            background: var(--primary-light);
+        }
+
+        .btn-danger {
+            background: var(--danger);
+            font-size: 18px !important;
+        }
+
+        #status {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(93, 173, 226, 0.15);
+            border-radius: 10px;
+            font-size: 18px !important;
+            color: var(--text);
+            border-left: 5px solid var(--primary-light);
+        }
+
+        .card-header {
+            background: var(--primary);
+            color: white;
+            padding: 20px 30px;
+            font-size: 24px !important;
+            font-weight: 600;
+            border-radius: 10px 10px 0 0 !important;
+        }
+
+        .chart-container {
+            height: 400px;
+        }
+
+        /* تكبير النصوص في السايدبار */
+        .sidebar-title {
+            font-size: 20px !important;
+        }
+        
+        .nav-links a {
+            font-size: 18px !important;
+        }
+
+        /* تكبير معلومات المستخدم */
+        .user-info {
+            font-size: 18px !important;
+        }
+        
+        .user-avatar {
+            font-size: 20px !important;
+            width: 45px !important;
+            height: 45px !important;
+        }
+        
+        .logout-btn {
+            font-size: 16px !important;
+        }
+
+
+        /* التأكيد على العناصر الزرقاء الفاتحة */
+        .fa-tachometer-alt, 
+        .fa-users, 
+        .fa-network-wired, 
+        .fa-chart-pie,
+        .fa-cogs,
+        .fa-user,
+        .fa-tachometer-alt,
+        .fa-database,
+        .fa-cog,
+        .fa-redo,
+        .fa-info-circle {
+            color: var(--primary-light) !important;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- السايدبار -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">M</div>
+            <div class="sidebar-title">MikroTik</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('dashboard') }}">
+                <i class="fas fa-home"></i> Dashboard
+            </a></li>
+            <li><a href="{{ url_for('mac_management') }}">
+                <i class="fas fa-address-card"></i> MAC Filtering
+            </a></li>
+            <li><a href="{{ url_for('firewall_management') }}">
+                <i class="fas fa-fire"></i> Firewall
+            </a></li>
+            <li><a href="{{ url_for('suricata_management') }}">
+                <i class="fas fa-shield-alt"></i> Suricata IDS
+            </a></li>
+            <li><a href="{{ url_for('traffic_control') }}" class="active">
+                <i class="fas fa-chart-line"></i> Traffic Control
+            </a></li>
+            <li><a href="{{ url_for('ai_detection') }}">
+                <i class="fas fa-robot"></i> AI Detection
+            </a></li>
+        </ul>
+    </div>
+    
+    <!-- المحتوى الرئيسي -->
+    <div class="main-content">
+        <div class="container-fluid mt-4">
+            <h2><i class="fas fa-tachometer-alt"></i> Traffic Control Dashboard</h2>
+            
+            <!-- صف الإحصائيات -->
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3><i class="fas fa-users"></i> Connected Devices</h3>
+                    <div class="stat-value" id="connected-devices">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3><i class="fas fa-network-wired"></i> Total Bandwidth</h3>
+                    <div class="stat-value" id="total-bandwidth">0 Mbps</div>
+                </div>
+                <div class="stat-card">
+                    <h3><i class="fas fa-chart-pie"></i> Usage</h3>
+                    <div class="stat-value" id="usage-percentage">0%</div>
+                </div>
+            </div>
+
+            <!-- لوحة التحكم -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-cogs"></i> Traffic Control Panel
+                </div>
+                <div class="card-body">
+                    <div class="traffic-control-container">
+                        <div class="control-form">
+                            <div class="form-group">
+                                <label for="client-select"><i class="fas fa-user"></i> Client IP:</label>
+                                <select id="client-select" class="form-control">
+                                    <option value="">Loading clients...</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="rate-input"><i class="fas fa-tachometer-alt"></i> Rate (e.g. 10mbit):</label>
+                                <input type="text" id="rate-input" class="form-control" value="20mbit">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="ceil-input"><i class="fas fa-tachometer-alt"></i> Ceil (e.g. 30mbit):</label>
+                                <input type="text" id="ceil-input" class="form-control" value="30mbit">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="quota-input"><i class="fas fa-database"></i> Quota (MB):</label>
+                                <input type="number" id="quota-input" class="form-control" value="100" min="1">
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 30px; display: flex; gap: 25px;">
+                            <button id="set-quota-btn" class="btn-action">
+                                <i class="fas fa-cog"></i> Set Quota
+                            </button>
+                            <button id="reset-quota-btn" class="btn-action btn-danger">
+                                <i class="fas fa-redo"></i> Reset Quota
+                            </button>
+                        </div>
+                        
+                        <div class="chart-container">
+                            <canvas id="usageChart"></canvas>
+                        </div>
+                        
+                        <div id="status">
+                            <i class="fas fa-info-circle"></i> Client: 192.168.1.100 | Usage: 0 MB / 100 MB | 0% of quota used
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            let usageChart = null;
+            let usageData = [];
+            let timeLabels = [];
+            const maxDataPoints = 20;
+            let currentClient = null;
+            let updateInterval = null;
+
+            // Fetch clients and populate dropdown
+            function fetchClients() {
+                $.get('/clients', function(data) {
+                    const select = $('#client-select');
+                    select.empty();
+                    
+                    if (data.length === 0) {
+                        select.append('<option value="">No clients found</option>');
+                        return;
+                    }
+                    
+                    $.each(data, function(index, ip) {
+                        select.append($('<option>', {
+                            value: ip,
+                            text: ip
+                        }));
+                    });
+                    
+                    if (data.length > 0) {
+                        loadClientData(data[0]);
+                    }
+                }).fail(function() {
+                    $('#status').html('<i class="fas fa-exclamation-triangle"></i> Error loading clients');
+                });
+            }
+
+            // Load data for a specific client
+            function loadClientData(clientIp) {
+                currentClient = clientIp;
+                usageData = [];
+                timeLabels = [];
+                
+                if (usageChart) {
+                    usageChart.destroy();
+                }
+                
+                createChart();
+                updateUsage(clientIp);
+                
+                if (updateInterval) {
+                    clearInterval(updateInterval);
+                }
+                
+                updateInterval = setInterval(function() {
+                    updateUsage(clientIp);
+                }, 5000);
+            }
+
+            // Create the chart
+            function createChart() {
+                const ctx = document.getElementById('usageChart').getContext('2d');
+                usageChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: timeLabels,
+                        datasets: [{
+                            label: 'Usage (MB)',
+                            data: usageData,
+                            borderColor: '#3498db',
+                            backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                            fill: true,
+                            tension: 0.2,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: { 
+                                title: { 
+                                    display: true, 
+                                    text: 'Time',
+                                    color: '#7f8c8d'
+                                },
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                }
+                            },
+                            y: { 
+                                beginAtZero: true, 
+                                title: { 
+                                    display: true, 
+                                    text: 'MB',
+                                    color: '#7f8c8d'
+                                },
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: '#34495e',
+                                    font: {
+                                        size: 16
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Update usage data
+            function updateUsage(clientIp) {
+                if (!clientIp) return;
+
+                $.get(`/usage/${clientIp}`, function(data) {
+                    if (data.error) {
+                        $('#status').html(`<i class="fas fa-exclamation-triangle"></i> ${data.error}`);
+                        return;
+                    }
+
+                    const now = new Date();
+                    const timeStr = now.toLocaleTimeString();
+	    function updateTrafficStats() {
+	       $.get('/usage/stats', function(data) {
+	           if (!data.error) {
+	               $('#connected-devices').text(data.connected_devices);
+	               $('#total-bandwidth').text(data.total_bandwidth);
+	               $('#usage-percentage').text(data.usage_percentage + '%');
+	           }
+	       });
+	   }
+
+                    // Keep only maxDataPoints points
+                    if (usageData.length >= maxDataPoints) {
+                        usageData.shift();
+                        timeLabels.shift();
+                    }
+
+                    usageData.push(data.usage_mb);
+                    timeLabels.push(timeStr);
+                    
+                    if (usageChart) {
+                        usageChart.update();
+                    }
+
+                    let statusHtml = `<i class="fas fa-user"></i> Client: ${clientIp} | `;
+                    statusHtml += `<i class="fas fa-database"></i> Usage: ${data.usage_mb} MB / ${data.quota_limit_mb} MB | `;
+                    
+                    if (data.quota_exceeded) {
+                        statusHtml += `<i class="fas fa-exclamation-triangle" style="color: var(--danger)"></i> Quota exceeded!`;
+                    } else {
+                        const percent = Math.round((data.usage_mb / data.quota_limit_mb) * 100);
+                        statusHtml += `<i class="fas fa-info-circle"></i> ${percent}% of quota used`;
+                    }
+
+                    $('#status').html(statusHtml);
+                }).fail(function() {
+                    $('#status').html('<i class="fas fa-exclamation-triangle"></i> Error fetching usage data');
+                });
+            }
+
+            // Set quota for client
+            $('#set-quota-btn').click(function() {
+                const clientIp = $('#client-select').val();
+                const rate = $('#rate-input').val().trim();
+                const ceil = $('#ceil-input').val().trim();
+                const quotaMb = $('#quota-input').val().trim();
+
+                if (!clientIp || !rate || !ceil || !quotaMb) {
+                    alert('Please fill all fields');
+                    return;
+                }
+
+                $.ajax({
+                    url: '/set_quota',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        client_ip: clientIp,
+                        rate: rate,
+                        ceil: ceil,
+                        quota_mb: quotaMb
+                    }),
+                    success: function() {
+                        $('#status').html(`<i class="fas fa-check-circle"></i> Quota set for ${clientIp}`);
+                        loadClientData(clientIp);
+                    },
+                    error: function(xhr) {
+                        const error = xhr.responseJSON ? xhr.responseJSON.error : 'Unknown error';
+                        $('#status').html(`<i class="fas fa-exclamation-triangle"></i> Failed to set quota: ${error}`);
+                    }
+                });
+            });
+
+            // Reset quota for client
+            $('#reset-quota-btn').click(function() {
+                const clientIp = $('#client-select').val();
+                if (!clientIp) {
+                    alert('Please select a client');
+                    return;
+                }
+
+                $.ajax({
+                    url: '/reset_quota',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        client_ip: clientIp
+                    }),
+                    success: function() {
+                        $('#status').html(`<i class="fas fa-check-circle"></i> Quota reset for ${clientIp}`);
+                        loadClientData(clientIp);
+                    },
+                    error: function(xhr) {
+                        const error = xhr.responseJSON ? xhr.responseJSON.error : 'Unknown error';
+                        $('#status').html(`<i class="fas fa-exclamation-triangle"></i> Failed to reset quota: ${error}`);
+                    }
+                });
+            });
+
+            // Handle client selection change
+            $('#client-select').change(function() {
+                const clientIp = $(this).val();
+                if (clientIp) {
+                    loadClientData(clientIp);
+                }
+            });
+
+            // Initialize
+            fetchClients();
+        });
+    </script>
+</body>
+</html>

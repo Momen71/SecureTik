@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MikroTik Security Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #3498db;
+            --primary-light: #5dade2;
+            --secondary: #2c3e50;
+            --background: #f8f9fa;
+            --card: #ffffff;
+            --text: #34495e;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* السايدبار */
+        .sidebar {
+            width: 250px;
+            background: var(--secondary);
+            color: white;
+            height: 100vh;
+            position: fixed;
+            padding-top: 30px;
+        }
+        
+        .sidebar-header {
+            padding: 0 20px 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .sidebar-logo {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .sidebar-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .nav-links {
+            list-style: none;
+            padding: 0 15px;
+        }
+        
+        .nav-links li {
+            margin-bottom: 10px;
+        }
+        
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            gap: 12px;
+        }
+        
+        .nav-links a:hover, 
+        .nav-links a.active {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+        
+        .nav-links i {
+            width: 24px;
+            text-align: center;
+        }
+        
+	/* يمكنك إضافة هذا في ملف الـ CSS الخاص بك */
+	.sidebar {
+    	    width: 250px;
+   	    background: #2c3e50;
+	    color: white;
+	    height: 100vh;
+	    position: fixed;
+	}
+
+	.nav-links a {
+	    padding: 12px 15px;
+	    color: rgba(255,255,255,0.8);
+	    text-decoration: none;
+	    display: flex;
+	    align-items: center;
+	    gap: 12px;
+	}
+
+	.nav-links a:hover,
+	.nav-links a.active {
+	    background: rgba(255,255,255,0.1);
+	    color: white;
+	}
+
+	.nav-links i {
+	    width: 24px;
+	    text-align: center;
+	}
+        /* المحتوى الرئيسي */
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 30px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .logout-btn {
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 15px;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(52, 152, 219, 0.1);
+        }
+        
+        /* بطاقات الوظائف */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .card {
+            background: var(--card);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .card-header i {
+            font-size: 24px;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(52, 152, 219, 0.08);
+            border-radius: 10px;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        .chart-container {
+            height: 250px;
+            width: 100%;
+        }
+        
+        .chart-container {
+            margin-top: 20px;
+        }
+        
+        .btn-card {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-top: 15px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        
+        .btn-card:hover {
+            background: var(--primary-light);
+        }
+        
+        .nav-links a.active {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            position: relative;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- السايدبار -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">M</div>
+            <div class="sidebar-title">MikroTik</div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('dashboard') }}" class="{% if request.path == url_for('dashboard') %}active{% endif %}">
+                <i class="fas fa-home"></i> Dashboard
+            </a></li>
+            <li><a href="{{ url_for('mac_management') }}" class="{% if request.path == url_for('mac_management') %}active{% endif %}">
+                <i class="fas fa-address-card"></i> MAC Filtering
+            </a></li>
+            <li><a href="{{ url_for('firewall_management') }}" class="{% if request.path == url_for('firewall_management') %}active{% endif %}">
+                <i class="fas fa-fire"></i> Firewall (iptables)
+            </a></li>
+            <li><a href="{{ url_for('suricata_management') }}" class="{% if request.path == url_for('suricata_management') %}active{% endif %}">
+                <i class="fas fa-shield-alt"></i> Suricata IDS
+            </a></li>
+            <li><a href="{{ url_for('traffic_control') }}" class="{% if request.path == url_for('traffic_control') %}active{% endif %}">
+                <i class="fas fa-chart-bar"></i> traffic_control
+            </a></li>
+	    <li>
+	    <a href="{{ url_for('ai_detection') }}" class="{% if request.path == url_for('ai_detection') %}active{% endif %}">
+         <i class="fas fa-robot"></i> AI Rate Detection
+	    </a></li>
+        </ul>
+    </div>
+    
+    <!-- المحتوى الرئيسي -->
+    <div class="main-content">
+        <div class="header">
+            <h1>Network Security Dashboard</h1>
+            <div class="user-info">
+                <div class="user-avatar">{{ current_user|first|upper }}</div>
+                <div>
+                    <div class="username">{{ current_user }}</div>
+                    <div class="user-role">Administrator</div>
+                </div>
+                <form action="/logout" method="post">
+                    <button type="submit" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="dashboard-grid">
+            <!-- MAC Filtering Card -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-address-card"></i>
+                    <h2>MAC Filtering</h2>
+                </div>
+                <div class="card-body">
+                    <p>Manage blocked devices by MAC address</p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">{{ blocked_count }}</div>
+                            <div class="stat-label">Blocked Devices</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">{{ new_today }}</div>
+                            <div class="stat-label">New Today</div>
+                        </div>
+                    </div>
+                    <a href="/mac-management" class="btn-card">Manage MAC Addresses</a>
+                </div>
+            </div>
+            
+	<!-- Firewall Card -->
+	<div class="card">
+	    <div class="card-header">
+	        <i class="fas fa-fire"></i>
+	        <h2>Firewall (iptables)</h2>
+	    </div>
+	    <div class="card-body">
+	        <p>Configure network security rules</p>
+	        <div class="stats-grid">
+	            <div class="stat-item">
+	                <div class="stat-value">{{ firewall_rules_count }}</div>
+	                <div class="stat-label">Active Rules</div>
+	            </div>
+	            <div class="stat-item">
+	                <div class="stat-value">{{ firewall_status }}</div>
+	                <div class="stat-label">Firewall Status</div>
+	            </div>
+	        </div>
+	        <a href="{{ url_for('firewall_management') }}" class="btn-card">Configure Firewall</a>
+	    </div>
+	</div>            
+            <!-- Suricata IDS Card -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-shield-alt"></i>
+                    <h2>Suricata IDS</h2>
+                </div>
+                <div class="card-body">
+                    <p>Intrusion detection and prevention</p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">{{ suricata_stats.total_alerts }}</div>
+                            <div class="stat-label">Alerts Today</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">{{ suricata_stats.critical_alerts }}</div>
+                            <div class="stat-label">Critical</div>
+                        </div>
+                    </div>
+                    <a href="/suricata" class="btn-card">View IDS Alerts</a>
+                </div>
+            </div>
+            
+            <!-- Traffic Monitoring Card -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-chart-line"></i>
+                    <h2>traffic_control</h2>
+                </div>
+                <div class="card-body">
+                    <p>Network bandwidth and usage statistics</p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">{{ traffic_stats.connected_devices }}</div>
+                            <div class="stat-label">Connected Devices</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">{{ traffic_stats.total_bandwidth }} Mbps</div>
+                            <div class="stat-label">Total Bandwidth</div>
+                        </div>
+                    </div>
+	            <a href="{{ url_for('traffic_control') }}" class="btn-card">View Traffic Control</a>
+                </div>
+            </div>
+	<!-- بطاقة AI Rate Detection -->
+	<div class="card">
+	    <div class="card-header">
+	        <i class="fas fa-robot"></i>
+	        <h2>AI Rate Detection</h2>
+	    </div>
+	    <div class="card-body">
+	        <p>AI-powered threat analysis</p>
+	        <div class="stats-grid">
+	            <div class="stat-item">
+	                <div class="stat-value">{{ ai_stats.total_alerts }}</div>
+	                <div class="stat-label">Total Alerts</div>
+	            </div>
+	            <div class="stat-item">
+	                <div class="stat-value">{{ ai_stats.malicious }}</div>
+	                <div class="stat-label">Malicious</div>
+	            </div>
+	            <div class="stat-item">
+	                <div class="stat-value">{{ ai_stats.high_confidence }}</div>
+	                <div class="stat-label">High Confidence</div>
+	            </div>
+	        </div>
+	        <a href="{{ url_for('ai_detection') }}" class="btn-card">View AI Analysis</a>
+	    </div>
+	</div>
+        </div>
+    </div>
+
+    <script>
+        // رسم بياني لحركة المرور
+        const ctx = document.getElementById('trafficChart').getContext('2d');
+        const trafficChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'],
+                datasets: [{
+                    label: 'Inbound Traffic (Mbps)',
+                    data: [12, 19, 8, 25, 32, 28],
+                    borderColor: '#3498db',
+                    backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }, {
+                    label: 'Outbound Traffic (Mbps)',
+                    data: [8, 12, 5, 18, 24, 20],
+                    borderColor: '#2ecc71',
+                    backgroundColor: 'rgba(46, 204, 113, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+	$(document).ready(function() {
+	    // تفعيل جميع الأزرار
+	    $('.btn-card').click(function(e) {
+	        e.preventDefault();
+	        const targetUrl = $(this).attr('href');
+	        window.location.href = targetUrl;
+	    });
+
+	    // تفعيل أزرار Firewall Management
+	    $('#toggle-firewall').click(function() {
+	        $.post('/api/firewall/toggle', function(data) {
+	            alert(data.message);
+	            location.reload();
+	        });
+	    });
+
+	    // تفعيل أزرار Services
+	    $('.toggle-service').click(function() {
+	        const service = $(this).data('service');
+	        $.post('/api/service/toggle', {service: service}, function(data) {
+	            alert(data.message);
+	            location.reload();
+	        });
+	    });
+	});
+    </script>
+</body>
+</html>

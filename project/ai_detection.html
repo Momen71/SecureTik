@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Rate Detection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* استخدمي نفس تنسيقات الـ CSS من dashboard.html للتنسيق الموحد */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:hover {
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        .severity-high {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .severity-medium {
+            color: #f39c12;
+        }
+        .severity-low {
+            color: #2ecc71;
+        }
+    </style>
+</head>
+<body>
+    <!-- نفس السايدبار من dashboard.html -->
+    <div class="sidebar">
+        <!-- ... -->
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="main-content">
+        <div class="header">
+            <h1>AI Rate Detection</h1>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Source IP</th>
+                    <th>Destination IP</th>
+                    <th>Protocol</th>
+                    <th>Signature</th>
+                    <th>Severity</th>
+                    <th>AI Confidence</th>
+                    <th>Prediction</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alert in ai_alerts %}
+                <tr>
+                    <td>{{ alert.timestamp }}</td>
+                    <td>{{ alert.src_ip }}</td>
+                    <td>{{ alert.dest_ip }}</td>
+                    <td>{{ alert.proto }}</td>
+                    <td>{{ alert.signature }}</td>
+                    <td class="severity-{{ 'high' if alert.severity == 1 else 'medium' if alert.severity == 2 else 'low' }}">
+                        {{ alert.severity }}
+                    </td>
+                    <td>{{ "%.2f"|format(alert.ai_confidence * 100) }}%</td>
+                    <td>{{ "Malicious" if alert.prediction == 1 else "Benign" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

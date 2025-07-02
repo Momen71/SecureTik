@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}Firewall (iptables) Management{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <h2><i class="fas fa-fire"></i> Firewall (iptables) Management</h2>
+    
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Firewall Status</h5>
+                    <h2 class="card-text">{{ firewall_status }}</h2>
+                    <form method="post" action="{{ url_for('toggle_firewall') }}">
+                        <button type="submit" class="btn btn-light mt-2">
+                            {% if firewall_status == 'Enabled' %}Disable{% else %}Enable{% endif %} Firewall
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-primary-light text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Active Rules</h5>
+                    <h2 class="card-text">{{ active_rules_count }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-secondary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Firewall Script</h5>
+                    <p class="card-text">{{ rules_file_path }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h4><i class="fas fa-list"></i> Firewall Rules Summary</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="bg-primary-light text-white">
+                        <tr>
+                            <th>Chain</th>
+                            <th>Policy</th>
+                            <th>Rules Count</th>
+                            <th>Packets</th>
+                            <th>Bytes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for chain in chains_info %}
+                        <tr>
+                            <td>{{ chain.name }}</td>
+                            <td>
+                                <span class="badge bg-{% if chain.policy == 'DROP' %}danger{% else %}success{% endif %}">
+                                    {{ chain.policy }}
+                                </span>
+                            </td>
+                            <td>{{ chain.rules_count }}</td>
+                            <td>{{ chain.packets }}</td>
+                            <td>{{ chain.bytes }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- جدول الخدمات الجديد -->
+    <div class="card mt-4">
+        <div class="card-header bg-primary text-white">
+            <h4><i class="fas fa-server"></i> Enabled Services</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="bg-primary-light text-white">
+                        <tr>
+                            <th>Service Name</th>
+                            <th>Port</th>
+                            <th>Protocol</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for service in services %}
+                        <tr>
+                            <td>{{ service.name }}</td>
+                            <td>{{ service.port }}</td>
+                            <td>{{ service.protocol }}</td>
+                            <td>
+                                <span class="badge bg-success">Enabled</span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-primary-light {
+        background-color: #5dade2;
+    }
+    .table-hover tbody tr:hover {
+        background-color: rgba(93, 173, 226, 0.1);
+    }
+</style>
+{% endblock %}

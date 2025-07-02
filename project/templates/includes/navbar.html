@@ -1,0 +1,29 @@
+
+<nav class="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-logo">M</div>
+        <div class="sidebar-title">MikroTik</div>
+    </div>
+    
+    <ul class="nav-links">
+        <li><a href="{{ url_for('dashboard') }}" class="{% if request.path == url_for('dashboard') %}active{% endif %}">
+            <i class="fas fa-home"></i> Dashboard
+        </a></li>
+        <li><a href="{{ url_for('mac_management') }}" class="{% if request.path == url_for('mac_management') %}active{% endif %}">
+            <i class="fas fa-address-card"></i> MAC Filtering
+        </a></li>
+        <li><a href="{{ url_for('firewall_management') }}" class="{% if request.path == url_for('firewall_management') %}active{% endif %}">
+            <i class="fas fa-fire"></i> Firewall (iptables)
+        </a></li>
+        <li><a href="{{ url_for('suricata_management') }}" class="{% if request.path == url_for('suricata_management') %}active{% endif %}">
+            <i class="fas fa-shield-alt"></i> Suricata IDS
+        </a></li>
+        <li><a href="{{ url_for('traffic_control') }}" class="{% if request.path == url_for('traffic_control') %}active{% endif %}">
+            <i class="fas fa-chart-line"></i> traffic_control
+        </a></li>
+        <!-- العنصر الجديد -->
+        <li><a href="{{ url_for('ai_detection') }}" class="{% if request.path == url_for('ai_detection') %}active{% endif %}">
+            <i class="fas fa-robot"></i> AI Rate Detection
+        </a></li>
+    </ul>
+</nav>

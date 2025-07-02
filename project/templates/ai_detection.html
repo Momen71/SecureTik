@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block title %}AI Rate Detection{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <h2><i class="fas fa-robot"></i> AI Rate Detection</h2>
+    
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Total Alerts</h5>
+                    <h2 class="card-text">{{ ai_alerts|length }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-danger text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Malicious (AI)</h5>
+                    <h2 class="card-text">{{ ai_alerts|selectattr('prediction', 'equalto', 1)|list|length }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">High Confidence (>90%)</h5>
+                    <h2 class="card-text">{{ ai_alerts|selectattr('ai_confidence', 'ge', 0.9)|list|length }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h4><i class="fas fa-brain"></i> AI Analysis Results</h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="bg-primary-light text-white">
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Signature</th>
+                            <th>Source IP</th>
+                            <th>Destination IP</th>
+                            <th>Protocol</th>
+                            <th>Severity</th>
+                            <th>AI Confidence</th>
+                            <th>Prediction</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for alert in ai_alerts %}
+                        <tr>
+                            <td>{{ alert.timestamp }}</td>
+                            <td>{{ alert.signature }}</td>
+                            <td>{{ alert.src_ip }}</td>
+                            <td>{{ alert.dest_ip }}</td>
+                            <td>{{ alert.proto }}</td>
+                            <td>
+                                {% if alert.severity == 1 %}
+                                    <span class="badge bg-danger">High</span>
+                                {% elif alert.severity == 2 %}
+                                    <span class="badge bg-warning text-dark">Medium</span>
+                                {% else %}
+                                    <span class="badge bg-success">Low</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div class="progress">
+                                    <div class="progress-bar 
+                                        {% if alert.ai_confidence >= 0.9 %}bg-success
+                                        {% elif alert.ai_confidence >= 0.7 %}bg-primary
+                                        {% else %}bg-warning text-dark{% endif %}" 
+                                        role="progressbar" 
+                                        style="width: {{ alert.ai_confidence * 100 }}%" 
+                                        aria-valuenow="{{ alert.ai_confidence * 100 }}" 
+                                        aria-valuemin="0" 
+                                        aria-valuemax="100">
+                                        {{ "%.1f"|format(alert.ai_confidence * 100) }}%
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                {% if alert.prediction == 1 %}
+                                    <span class="badge bg-danger">Malicious</span>
+                                {% else %}
+                                    <span class="badge bg-success">Benign</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-primary-light {
+        background-color: #5dade2;
+    }
+    .bg-primary-dark {
+        background-color: #2c3e50;
+    }
+    .table-hover tbody tr:hover {
+        background-color: rgba(93, 173, 226, 0.1);
+    }
+    .progress {
+        height: 20px;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+    }
+    .progress-bar {
+        font-weight: 500;
+        font-size: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+{% endblock %}
+

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Current iptables Rules</h2>
+    <a href="{{ url_for('mac_management') }}" class="btn btn-secondary mb-3">Back to MAC Management</a>
+    
+    <div class="card">
+        <div class="card-body">
+            <pre>{{ rules }}</pre>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,330 @@
+from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
+from werkzeug.security import check_password_hash
+from mac_filtering import block_mac, unblock_mac
+from users import users
+import jsرادات في بداية الملف
+from datetime import datetime
+import sqlite3
+import os
+import re
+import subprocess
+
+app = Flask(__name__)
+app.secret_key = 'your_strong_secret_key_here'  # استبدلي بمفتاح سري قوي
+
+# إعداد نظام إدارة الجلسات
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'index'
+
+class User(UserMixin):
+    def __init__(self, id):
+        self.id = id
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User(user_id)
+
+def init_db():
+    db_path = 'security.db'
+    conn = sqlite3.connect(db_path)
+    c = conn.cursor()
+    
+    # إنشاء الجدول إذا لم يكن موجوداً
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS blocked_mac (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            mac TEXT NOT NULL UNIQUE,
+            reason TEXT,
+            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    
+    # إضافة بيانات تجريبية إذا كان الجدول فارغاً
+    c.execute("SELECT COUNT(*) FROM blocked_mac")
+    if c.fetchone()[0] == 0:
+        c.executemany(
+            "INSERT INTO blocked_mac (mac, reason) VALUES (?, ?)",
+            [
+                ('00:11:22:33:44:55', 'Test device 1'),
+                ('AA:BB:CC:DD:EE:FF', 'Test device 2'),
+                ('12:34:56:78:90:AB', 'Test device 3')
+            ]
+        )
+    
+    conn.commit()
+    conn.close()
+
+# استدعاء الدالة عند بدء التطبيق
+init_db()
+
+def is_valid_mac(mac):
+    """Validate MAC address format"""
+    pattern = r'^([0-9A-Fa-f]{2}[:]){5}([0-9A-Fa-f]{2})$'
+    return re.match(pattern, mac) is not None
+
+def block_mac(mac_address, reason="Manual block"):
+    """Block a MAC address and add to database"""
+    conn = None
+    try:
+        # First remove any existing rules to avoid duplicates
+        subprocess.run(
+            ['sudo', 'iptables', '-D', 'INPUT', '-m', 'mac', '--mac-source', mac_address, '-j', 'DROP'],
+            stderr=subprocess.DEVNULL
+        )
+        
+        # Add the new INPUT rule
+        subprocess.run(
+            ['sudo', 'iptables', '-A', 'INPUT', '-m', 'mac', '--mac-source', mac_address, '-j', 'DROP'],
+            check=True
+        )
+        
+        # Add FORWARD rule (new addition)
+        subprocess.run(
+            ['sudo', 'iptables', '-A', 'FORWARD', '-m', 'mac', '--mac-source', mac_address, '-j', 'DROP'],
+            check=True
+        )
+        
+        # Add to database
+        conn = sqlite3.connect('security.db')
+        c = conn.cursor()
+        c.execute("INSERT INTO blocked_mac (mac, reason) VALUES (?, ?)", 
+                 (mac_address, reason))
+        conn.commit()
+        return True
+        
+    except sqlite3.IntegrityError:
+        print(f"MAC {mac_address} already exists in database")
+        return False
+    except subprocess.CalledProcessError as e:
+        print(f"iptables error: {e.stderr}")
+        return False
+    except Exception as e:
+        print(f"Unexpected error: {str(e)}")
+        return False
+    finally:
+        if conn:
+            conn.close()
+
+def unblock_mac(mac_address):
+    """Unblock a MAC address and remove from database"""
+    conn = None
+    try:
+        # Remove iptables rule
+        subprocess.run(
+            ['sudo', 'iptables', '-D', 'INPUT', '-m', 'mac', '--mac-source', mac_address, '-j', 'DROP'],
+            check=True
+        )
+        
+        # Remove from database
+        conn = sqlite3.connect('security.db')
+        c = conn.cursor()
+        c.execute("DELETE FROM blocked_mac WHERE mac=?", (mac_address,))
+        conn.commit()
+        return True
+        
+    except subprocess.CalledProcessError as e:
+        print(f"iptables error: {e.stderr}")
+        return False
+    except Exception as e:
+        print(f"Unexpected error: {str(e)}")
+        return False
+    finally:
+        if conn:
+            conn.close()
+
+def restore_iptables_rules():
+    """Restore iptables rules from database on startup"""
+    conn = None
+    try:
+        conn = sqlite3.connect('security.db')
+        c = conn.cursor()
+        c.execute("SELECT mac FROM blocked_mac")
+        
+        for (mac,) in c.fetchall():
+            subprocess.run(
+                ['sudo', 'iptables', '-A', 'INPUT', '-m', 'mac', '--mac-source', mac, '-j', 'DROP'],
+                check=True
+            )
+            subprocess.run(
+                ['sudo', 'iptables', '-A', 'FORWARD', '-i', 'eth0', '-m', 'mac', '--mac-source', mac, '-j', 'DROP'],
+                check=True
+            )
+            
+        print("Successfully restored iptables rules")
+    except Exception as e:
+        print(f"Error restoring rules: {e}")
+    finally:
+        if conn:
+            conn.close()
+
+# استدعاء الدالة عند بدء التطبيق
+restore_iptables_rules()
+@app.route('/')
+def index():
+    return render_template('login.html')
+
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form['username']
+    password = request.form['password']
+    
+    # التحقق من وجود المستخدم والمطابقة
+    if username in users and check_password_hash(users[username], password):
+        user = User(username)
+        login_user(user)
+        return redirect(url_for('dashboard'))
+    else:
+        flash('Invalid username or password', 'error')
+        return redirect(url_for('index'))
+
+def get_mac_stats():
+    conn = sqlite3.connect('security.db')
+    c = conn.cursor()
+    
+    c.execute("""
+        SELECT 
+            COUNT(*) as total,
+            SUM(CASE WHEN DATE(timestamp) = DATE('now') THEN 1 ELSE 0 END) as today
+        FROM blocked_mac
+    """)
+    
+    stats = c.fetchone()
+    conn.close()
+    
+    return {
+        'blocked_count': stats[0],
+        'new_today': stats[1]
+    }
+
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    stats = get_mac_stats()
+    return render_template('dashboard.html',
+                         current_user=current_user.id,
+                         **stats)
+
+@app.route('/logout', methods=['POST'])  # تم التعديل هنا ليقبل POST فقط
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+@app.route('/mac-management')
+@login_required
+def mac_management():
+    conn = sqlite3.connect('security.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM blocked_mac")
+    mac_list = c.fetchall()
+    conn.close()
+    return render_template('mac_management.html', 
+                          current_user=current_user.id,
+                          mac_list=mac_list)
+
+@app.route('/block-mac', methods=['POST'])
+@login_required
+def block_mac_route():
+    mac = request.form['mac'].strip().upper()  # تنظيف المدخلات
+    reason = request.form.get('reason', 'Manual block')
+    
+    # التحقق من صحة العنوان
+    if not is_valid_mac(mac):
+        flash('Invalid MAC format (should be XX:XX:XX:XX:XX:XX)', 'danger')
+        return redirect(url_for('mac_management'))
+    
+    conn = None
+    try:
+        conn = sqlite3.connect('security.db')
+        c = conn.cursor()
+        
+        # التحقق من عدم وجود العنوان مسبقاً
+        c.execute("SELECT 1 FROM blocked_mac WHERE mac=?", (mac,))
+        if c.fetchone():
+            flash('This MAC is already blocked', 'warning')
+            return redirect(url_for('mac_management'))
+        
+        # إضافة إلى قاعدة البيانات
+        c.execute("INSERT INTO blocked_mac (mac, reason) VALUES (?, ?)", 
+                 (mac, reason))
+        conn.commit()
+        
+        # تنفيذ أمر الحظر
+        result = subprocess.run(
+            ['sudo', 'iptables', '-A', 'INPUT', '-m', 'mac', '--mac-source', mac, '-j', 'DROP'],
+            stderr=subprocess.PIPE,
+            stdout=subprocess.PIPE
+        )
+        
+        if result.returncode != 0:
+            raise Exception(result.stderr.decode())
+            
+        flash(f'Successfully blocked MAC: {mac}', 'success')
+        
+    except sqlite3.IntegrityError:
+        flash('This MAC is already blocked', 'warning')
+    except Exception as e:
+        # إذا فشل iptables، نرجع الحذف من قاعدة البيانات
+        if conn:
+            conn.rollback()
+        flash(f'Failed to block MAC: {str(e)}', 'danger')
+    finally:
+        if conn:
+            conn.close()
+    
+    return redirect(url_for('mac_management'))
+
+@app.route('/unblock-mac', methods=['POST'])
+@login_required
+def unblock_mac_route():
+    mac = request.form['mac']
+    from mac_filtering import unblock_mac
+    if unblock_mac(mac):
+        flash(f'MAC address {mac} unblocked successfully!', 'success')
+    else:
+        flash(f'Failed to unblock MAC address {mac}', 'danger')
+    return redirect(url_for('mac_management'))
+@app.route('/iptables-rules')
+@login_required
+def iptables_rules():
+    try:
+        result = subprocess.run(
+            ['sudo', 'iptables', '-L', '-n', '-v'],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        rules = result.stdout
+    except Exception as e:
+        rules = str(e)
+    
+    return render_template('iptables_rules.html', 
+                        current_user=current_user.id,
+                        rules=rules)
+
+@app.route('/firewall')
+@login_required
+def firewall_management():
+    # Get current iptables rules (example)
+    rules = [
+        {'chain': 'INPUT', 'protocol': 'tcp', 'source': 'any', 'destination': '22', 'action': 'DROP'},
+        {'chain': 'FORWARD', 'protocol': 'all', 'source': '192.168.1.100', 'destination': 'any', 'action': 'REJECT'}
+    ]
+    return render_template('iptables_management.html', rules=rules)
+
+@app.route('/suricata')
+@login_required
+def suricata_management():
+    # Get Suricata alerts (example)
+    alerts = [
+        {'timestamp': '2025-06-16 10:15:22', 'alert_type': 'SSH Brute Force', 
+         'src_ip': '192.168.1.15', 'dest_ip': '192.168.1.1', 'severity': 'High'},
+        {'timestamp': '2025-06-16 09:30:45', 'alert_type': 'Malware Connection', 
+         'src_ip': '10.0.0.5', 'dest_ip': '45.33.12.10', 'severity': 'Medium'}
+    ]
+    return render_template('suricata_management.html', alerts=alerts)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8080, debug=True)
